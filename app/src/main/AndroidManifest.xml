@@ -10,6 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AskActivity">
+        <activity android:name=".AccueilActivity" />
+        <activity android:name=".InscriptionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
