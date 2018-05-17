@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfilActivity">
-        <activity android:name=".AskActivity">
+        <activity android:name=".ProfilActivity"/>
+        <activity android:name=".AskActivity"/>
         <activity android:name=".AccueilActivity" />
         <activity android:name=".InscriptionActivity">
             <intent-filter>
@@ -18,8 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityPropositions"></activity>
-        <activity android:name=".AuraActivity"></activity>
-        <activity android:name=".ActivityNo"></activity>
+        <activity android:name=".ActivityPropositions"/>
+        <activity android:name=".AuraActivity"/>
+        <activity android:name=".ActivityNo"/>
     </application>
 </manifest>
