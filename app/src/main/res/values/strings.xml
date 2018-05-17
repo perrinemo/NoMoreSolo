@@ -4,6 +4,8 @@
     <string name="no_btn_text">No</string>
     <string name="yes_btn_text">Yes</string>
     <string name="app_name">No More Solo</string>
+    <string name="genre">Genre</string>
+    <string name="name">Name</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="species">Species</string>
