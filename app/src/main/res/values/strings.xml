@@ -31,4 +31,9 @@
     <string name="please_enter_fiels">Please enter an email and a password !</string>
     <string name="bad_mail">Bad mail</string>
     <string name="bad_auth">Bad authentication</string>
+    <string name="back">Back</string>
+    <string name="reset_password">Reset password</string>
+    <string name="enter_email">Please enter an email</string>
+    <string name="pass_sent">Password sent</string>
+    <string name="unknown_mail">Unknown email</string>
 </resources>
