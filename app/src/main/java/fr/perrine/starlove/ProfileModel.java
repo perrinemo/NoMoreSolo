@@ -8,23 +8,21 @@ public class ProfileModel {
     private String species;
     private int mass;
     private double height;
-    private String img;
+    private String avatar;
 
-    public ProfileModel(String userName, String genre, String species, int mass, double height, String img) {
+    public ProfileModel() {}
+
+    public ProfileModel(String userName, String genre, String species, int mass, double height, String avatar) {
         this.userName = userName;
         this.genre = genre;
         this.species = species;
         this.mass = mass;
         this.height = height;
-        this.img = img;
+        this.avatar = avatar;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public ProfileModel(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getUserName() {
@@ -65,5 +63,13 @@ public class ProfileModel {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
