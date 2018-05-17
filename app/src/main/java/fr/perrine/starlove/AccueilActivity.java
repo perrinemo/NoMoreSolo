@@ -27,6 +27,7 @@ public class AccueilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
+        /**
         // Crée une file d'attente pour les requêtes vers l'API
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -98,6 +99,7 @@ public class AccueilActivity extends AppCompatActivity {
 
         // On ajoute la requête à la file d'attente
         requestQueue.add(JsonArrayRequest);
+         */
     }
 }
 
