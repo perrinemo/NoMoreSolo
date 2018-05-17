@@ -1,6 +1,14 @@
 <resources>
-    <string name="no_page_choice">Ah ah ah ! Sorry, but you have no choice.</string>
     <string name="app_name">No More Solo</string>
+    <string name="name">Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="species">Species</string>
+    <string name="mass">Mass</string>
+    <string name="height">Height</string>
+    <string name="validate">Validate</string>
+    <string name="username">Username</string>
+    <string name="no_page_choice">Ah ah ah ! Sorry, but you have no choice.</string>
     <string name="hello">Hello</string>
     <string name="username">You !</string>
     <string name="phrase_1">TextView</string>
