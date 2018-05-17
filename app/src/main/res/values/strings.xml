@@ -1,4 +1,8 @@
-<resources>
+<resources> 
+    <string name="side_of_the_force">You are from the Dark side of the force</string>
+    <string name="which_side_of_the_force_you_want">Do you want to meet people from the same side of the force.</string>
+    <string name="no_btn_text">No</string>
+    <string name="yes_btn_text">Yes</string>
     <string name="app_name">No More Solo</string>
     <string name="genre">Genre</string>
     <string name="name">Name</string>
@@ -11,7 +15,6 @@
     <string name="username">Username</string>
     <string name="no_page_choice">Ah ah ah ! Sorry, but you have no choice.</string>
     <string name="hello">Hello</string>
-    <string name="username">You !</string>
     <string name="phrase_1">TextView</string>
     <string name="phrase_2">TextView</string>
     <string name="phrase_3">TextView</string>
