@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">StarLove</string>
+    <string name="app_name">No More Solo</string>
+    <string name="name">Name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="species">Species</string>
+    <string name="mass">Mass</string>
+    <string name="height">Height</string>
+    <string name="validate">Validate</string>
+    <string name="username">Username</string>
 </resources>
