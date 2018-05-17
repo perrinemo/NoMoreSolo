@@ -4,4 +4,19 @@
     <string name="which_side_of_the_force_you_want">Do you want to meet people from the same side of the force.</string>
     <string name="no_btn_text">No</string>
     <string name="yes_btn_text">Yes</string>
+    <string name="app_name">No More Love</string>
+    <string name="hello">Hello</string>
+    <string name="username">You !</string>
+    <string name="phrase_1">TextView</string>
+    <string name="phrase_2">TextView</string>
+    <string name="phrase_3">TextView</string>
+    <string name="phrase_4">TextView</string>
+    <string name="phrase_5">TextView</string>
+    <string name="phrase_6">TextView</string>
+    <string name="phrase_7">TextView</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
