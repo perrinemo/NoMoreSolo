@@ -13,6 +13,7 @@
         <activity android:name=".ProfilActivity" />
         <activity android:name=".AskActivity" />
         <activity android:name=".AccueilActivity" />
+        <activity android:name=".ConnexionActivity" />
         <activity android:name=".InscriptionActivity">
 
         </activity>
@@ -26,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ForgotPassActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

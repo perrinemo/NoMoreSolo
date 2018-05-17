@@ -1,9 +1,9 @@
 package fr.perrine.starlove;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-
-public class InscriptionActivity extends AppCompatActivity {
+public class ConnexionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,37 +24,55 @@ public class InscriptionActivity extends AppCompatActivity {
 
         final EditText inputMail = findViewById(R.id.et_email);
         final EditText inputPass = findViewById(R.id.et_password);
-        Button btnInscription = findViewById(R.id.btn_signin);
-        Button btnDejaInscrit = findViewById(R.id.btn_login);
+        Button btnConnexion = findViewById(R.id.btn_signin);
+        Button btnInscription = findViewById(R.id.btn_login);
+        Button btnForgotPass = findViewById(R.id.btn_forgot_password);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        btnDejaInscrit.setOnClickListener(new View.OnClickListener() {
+        btnConnexion.setText("Log in");
+        btnInscription.setText("Register ?");
+        btnForgotPass.setVisibility(View.VISIBLE);
+
+        if (auth.getCurrentUser() != null) {
+            Intent intent = new Intent(ConnexionActivity.this, AccueilActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InscriptionActivity.this, ConnexionActivity.class);
+                Intent intent = new Intent(ConnexionActivity.this, InscriptionActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnInscription.setOnClickListener(new View.OnClickListener() {
+        btnForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConnexionActivity.this, ForgotPassActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mail = inputMail.getText().toString();
                 String pass = inputPass.getText().toString();
 
                 if (TextUtils.isEmpty(mail) || TextUtils.isEmpty(pass)) {
-                    Toast.makeText(InscriptionActivity.this, R.string.please_enter_fiels, Toast.LENGTH_SHORT).show();
-                    return;
+                    Toast.makeText(ConnexionActivity.this, R.string.please_enter_fiels, Toast.LENGTH_SHORT).show();
                 }
 
-                auth.createUserWithEmailAndPassword(mail, pass)
-                        .addOnCompleteListener(InscriptionActivity.this, new OnCompleteListener<AuthResult>() {
+                auth.signInWithEmailAndPassword(mail, pass)
+                        .addOnCompleteListener(ConnexionActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(InscriptionActivity.this, R.string.bad_mail, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ConnexionActivity.this, R.string.bad_auth, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Intent intent = new Intent(InscriptionActivity.this, AskActivity.class);
+                                    Intent intent = new Intent(ConnexionActivity.this, AccueilActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
