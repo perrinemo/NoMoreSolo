@@ -26,7 +26,7 @@ public class GridAdapter extends ArrayAdapter<ProfileModel> {
         }
 
         ImageView heroImage = convertView.findViewById(R.id.img_item);
-        Glide.with(parent).load(profileModel.getImage()).into(heroImage);
+        Glide.with(parent).load(profileModel.getAvatar()).into(heroImage);
 
         return convertView;
 
