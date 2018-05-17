@@ -21,14 +21,6 @@ public class ProfileModel {
         this.avatar = avatar;
     }
 
-    public ProfileModel(String userName, String genre, String species, int mass, double height) {
-        this.userName = userName;
-        this.genre = genre;
-        this.species = species;
-        this.mass = mass;
-        this.height = height;
-    }
-
     public ProfileModel(String avatar) {
         this.avatar = avatar;
     }
