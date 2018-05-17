@@ -13,6 +13,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,10 +48,36 @@ public class AccueilActivity extends AppCompatActivity {
 
                                 String characUserName = characPage.getString("name");
                                 String characGenre = characPage.getString("gender");
-                                String characSpecie = characPage.getString("species");
-                               // String characImg = characPage.getString("wiki");
-                                int characMass = characPage.getInt("mass");
-                                double characHeight = characPage.getDouble("height");
+                                String characImg = characPage.getString("wiki");
+
+                                String characSpecie;
+                                if ((characPage.has("species"))){
+                                    characSpecie = characPage.getString("species");
+                                } else {
+                                    characSpecie = "not published";
+                                }
+
+
+                                int characMass;
+                                if ((characPage.has("mass"))) {
+                                    characMass = characPage.getInt("mass");
+                                } else {
+                                    characMass = 0;
+                                }
+
+                                double characHeight;
+                                if ((characPage.has("height"))) {
+                                    characHeight = characPage.getDouble("height");
+                                } else {
+                                    characHeight = 0.0;
+                                }
+
+                                ProfileModel user = new ProfileModel(characUserName, characGenre, characSpecie,
+                                        characMass,characHeight, characImg);
+
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference myRef = database.getReference("aAimer");
+                                myRef.push().setValue(user);
 
                             }
 
