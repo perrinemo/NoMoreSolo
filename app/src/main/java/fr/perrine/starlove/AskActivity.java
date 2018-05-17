@@ -1,5 +1,6 @@
 package fr.perrine.starlove;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
@@ -14,7 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -43,6 +46,7 @@ public class AskActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private String mUid;
     private DatabaseReference mDatabaseUsers;
+    private ImageView mAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +58,9 @@ public class AskActivity extends AppCompatActivity {
         final EditText editMass = findViewById(R.id.edit_mass);
         final EditText editHeight = findViewById(R.id.edit_height);
         Button btnValidate = findViewById(R.id.button_validate);
-        RadioButton male = findViewById(R.id.radiobtn_male);
-        RadioButton female = findViewById(R.id.radiobtn_female);
-        final ImageView avatar = findViewById(R.id.img_profile);
+        final RadioButton male = findViewById(R.id.radiobtn_male);
+        final RadioButton female = findViewById(R.id.radiobtn_female);
+        mAvatar = findViewById(R.id.img_profile);
         mProgressBar = findViewById(R.id.progress_bar);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -68,37 +72,64 @@ public class AskActivity extends AppCompatActivity {
             finish();
         }
 
-        final String username = editUser.getText().toString();
-        final String species = editSpecies.getText().toString();
-        final int mass = Integer.parseInt(editMass.getText().toString());
-        final double height = Double.parseDouble(editHeight.getText().toString());
-
-        if (male.isChecked()) {
-            mGenre = "male";
-        } else if (female.isChecked()) {
-            mGenre = "female";
-        }
-
-        avatar.setOnClickListener(new View.OnClickListener() {
+        mAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, GALLERY);
-                mProgressBar.setVisibility(View.VISIBLE);
+                AlertDialog.Builder builder = new AlertDialog.Builder(AskActivity.this);
+                builder.setTitle("My profile picture")
+                        .setPositiveButton("Gallery", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(Intent.ACTION_PICK,
+                                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                startActivityForResult(intent, GALLERY);
+                            }
+                        })
+                        .show();
             }
         });
+
+
 
         mDatabaseUsers = firebaseDatabase.getReference("users").child(mUid);
 
         btnValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ProfileModel model = new ProfileModel(username, mGenre, species, mass, height);
-                mDatabaseUsers.setValue(model);
-                Intent intent = new Intent(AskActivity.this, AccueilActivity.class);
-                startActivity(intent);
-                finish();
+                String username = editUser.getText().toString();
+                String species = editSpecies.getText().toString();
+                String strMass = editMass.getText().toString();
+                String strHeight = editHeight.getText().toString();
+
+                if (male.isChecked()) {
+                    mGenre = "male";
+                } else if (female.isChecked()) {
+                    mGenre = "female";
+                }
+
+                if (username.isEmpty() || species.isEmpty()) {
+                    Toast.makeText(AskActivity.this, R.string.please_fill_all_fields, Toast.LENGTH_SHORT).show();
+                } else {
+                    int mass = Integer.parseInt(strMass);
+                    double height = Double.parseDouble(strHeight);
+
+                    StorageReference ref = FirebaseStorage.getInstance().getReference().child(mUid).child("avatar.jpg");
+                    ref.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUri = taskSnapshot.getDownloadUrl();
+                            FirebaseDatabase.getInstance().getReference("users")
+                                    .child(mUid).child("avatar").setValue(downloadUri.toString());
+                        }
+                    });
+
+                    ProfileModel model = new ProfileModel(username, mGenre, species, mass, height);
+                    mDatabaseUsers.setValue(model);
+
+                    Intent intent = new Intent(AskActivity.this, AccueilActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }
@@ -111,27 +142,13 @@ public class AskActivity extends AppCompatActivity {
                 try {
                     if (resultCode == RESULT_OK) {
                         mFileUri = data.getData();
+                        Glide.with(this).load(mFileUri).into(mAvatar);
                         mGetImageUrl = mFileUri.getPath();
                     }
-                    saveCaptureImage();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
-        }
-    }
-
-    private void saveCaptureImage() {
-        if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
-            StorageReference ref = FirebaseStorage.getInstance().getReference().child(mUid).child("avatar.jpg");
-            ref.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUri = taskSnapshot.getDownloadUrl();
-                    FirebaseDatabase.getInstance().getReference("users")
-                            .child(mUid).child("avatar").setValue(downloadUri.toString());
-                }
-            });
         }
     }
 }
