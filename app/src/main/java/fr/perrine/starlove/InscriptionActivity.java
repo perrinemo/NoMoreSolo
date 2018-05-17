@@ -52,12 +52,12 @@ public class InscriptionActivity extends AppCompatActivity {
                         .addOnCompleteListener(InscriptionActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(InscriptionActivity.this, R.string.bad_mail, Toast.LENGTH_LONG).show();
+                                } else {
                                     Intent intent = new Intent(InscriptionActivity.this, AskActivity.class);
                                     startActivity(intent);
                                     finish();
-                                } else {
-                                    Toast.makeText(InscriptionActivity.this, R.string.bad_mail, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
