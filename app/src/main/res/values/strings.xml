@@ -28,4 +28,7 @@
     <string name="sign_in">Sign In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="please_enter_fiels">Please enter an email and a password !</string>
+    <string name="bad_mail">Bad mail</string>
+    <string name="bad_auth">Bad authentication</string>
 </resources>
