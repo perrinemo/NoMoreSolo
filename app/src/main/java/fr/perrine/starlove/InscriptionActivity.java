@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -53,12 +52,12 @@ public class InscriptionActivity extends AppCompatActivity {
                         .addOnCompleteListener(InscriptionActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (!task.isSuccessful()) {
-                                    Toast.makeText(InscriptionActivity.this, R.string.bad_mail, Toast.LENGTH_SHORT).show();
-                                } else {
+                                if (task.isSuccessful()) {
                                     Intent intent = new Intent(InscriptionActivity.this, AskActivity.class);
                                     startActivity(intent);
                                     finish();
+                                } else {
+                                    Toast.makeText(InscriptionActivity.this, R.string.bad_mail, Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
