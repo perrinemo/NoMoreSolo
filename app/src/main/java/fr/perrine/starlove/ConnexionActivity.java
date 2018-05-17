@@ -47,6 +47,14 @@ public class ConnexionActivity extends AppCompatActivity {
             }
         });
 
+        btnForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConnexionActivity.this, ForgotPassActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
