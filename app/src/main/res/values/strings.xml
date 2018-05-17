@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StarLove</string>
+    <string name="no_page_choice">Ah ah ah ! Sorry, but you have no choice.</string>
 </resources>
