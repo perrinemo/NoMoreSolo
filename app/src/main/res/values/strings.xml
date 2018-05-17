@@ -9,4 +9,9 @@
     <string name="phrase_5">TextView</string>
     <string name="phrase_6">TextView</string>
     <string name="phrase_7">TextView</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
