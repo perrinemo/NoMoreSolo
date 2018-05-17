@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">No More Solo</string>
+    <string name="app_name">No More Love</string>
+    <string name="hello">Hello</string>
+    <string name="username">You !</string>
+    <string name="phrase_1">TextView</string>
+    <string name="phrase_2">TextView</string>
+    <string name="phrase_3">TextView</string>
+    <string name="phrase_4">TextView</string>
+    <string name="phrase_5">TextView</string>
+    <string name="phrase_6">TextView</string>
+    <string name="phrase_7">TextView</string>
     <string name="forgot_password">Forgot Password ?</string>
     <string name="log_in">Log In</string>
     <string name="sign_in">Sign In</string>
