@@ -8,6 +8,7 @@ public class ProfileModel {
     private String species;
     private int mass;
     private double height;
+    private String image;
 
     public ProfileModel(String userName, String genre, String species, int mass, double height) {
         this.userName = userName;
@@ -15,6 +16,18 @@ public class ProfileModel {
         this.species = species;
         this.mass = mass;
         this.height = height;
+    }
+
+    public ProfileModel(String image) {
+        this.image = image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getUserName() {
