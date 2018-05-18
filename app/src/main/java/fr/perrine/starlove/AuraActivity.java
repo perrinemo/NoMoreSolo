@@ -18,12 +18,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class AuraActivity extends AppCompatActivity {
+
+    ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aura);
+
+        mImagesPeros = getIntent().getExtras().getParcelableArrayList("clef");
 
         Button yes = findViewById(R.id.yes_button);
         Button no = findViewById(R.id.no_button);
@@ -31,14 +37,18 @@ public class AuraActivity extends AppCompatActivity {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AuraActivity.this, ActivityPropositions.class));
+                Intent goProfilView = new Intent(AuraActivity.this, ActivityPropositions.class);
+                goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                startActivity(goProfilView);
             }
         });
 
         no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AuraActivity.this, ActivityNo.class));
+                Intent goProfilView = new Intent(AuraActivity.this, ActivityNo.class);
+                goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                startActivity(goProfilView);
             }
         });
     }
