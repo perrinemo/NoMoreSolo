@@ -15,11 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AccueilActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ActivityNo" />
         <activity android:name=".ActivityPropositions" />
@@ -31,7 +27,17 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".InscriptionActivity"></activity>
         <activity android:name=".ProfilActivity" />
-        <activity android:name=".SplashScreenActivity" />
+
+
+        <activity android:name=".SplashScreenActivity" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+
+        </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

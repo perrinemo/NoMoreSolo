@@ -17,8 +17,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         ImageView ivLogo = findViewById(R.id.img_splash);
         String urlImg = "";
-        Glide.with(this).load(urlImg) .into(ivLogo);
-        final int SPLASH_DISPLAY_LENGTH = 2500;
+        Glide.with(this).load(R.drawable.startroopers).into(ivLogo);
+        final int SPLASH_DISPLAY_LENGTH = 3000;
 
         new Handler().postDelayed(new Runnable(){
             @Override
