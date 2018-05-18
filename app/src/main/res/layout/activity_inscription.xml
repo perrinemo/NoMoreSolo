@@ -106,6 +106,7 @@
         android:background="@null"
         android:text="@string/forgot_password"
         android:textAllCaps="false"
+        android:textColor="@android:color/holo_orange_light"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />

@@ -15,9 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AccueilActivity"
-            android:screenOrientation="portrait">
-
-      </activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".ActivityNo"
             android:screenOrientation="portrait"/>
         <activity android:name=".ActivityPropositions"
@@ -32,18 +30,16 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name=".InscriptionActivity"
-            android:screenOrientation="portrait" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-
-        </intent-filter>
-        </activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".ProfilActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".SplashScreenActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
