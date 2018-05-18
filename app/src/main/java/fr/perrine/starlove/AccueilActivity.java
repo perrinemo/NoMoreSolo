@@ -1,5 +1,8 @@
 package fr.perrine.starlove;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -162,61 +166,78 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final ProgressBar progressBar = findViewById(R.id.progress_bar);
+                ValueAnimator animator = ValueAnimator.ofInt(0, progressBar.getMax());
+                animator.setDuration(8500);
+                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation){
+                        progressBar.setProgress((Integer)animation.getAnimatedValue());
+                    }
+                });
+                animator.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        // start your activity here
+                    }
+                });
+                animator.start();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         TextView load1 = findViewById(R.id.tv_load_1);
-                        load1.setText("Hello");
-                    }
-                }, 500);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView load2 = findViewById(R.id.tv_load_2);
-                        load2.setText("beautyfull");
-                    }
-                }, 1000);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        TextView load3 = findViewById(R.id.tv_load_3);
-                        load3.setText("world");
+                        load1.setText("Loading the blasters");
                     }
                 }, 1500);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        TextView load4 = findViewById(R.id.tv_load_4);
-                        load4.setText("of");
+                        TextView load2 = findViewById(R.id.tv_load_2);
+                        load2.setText("Reading deep mind of the user");
                     }
                 }, 2000);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        TextView load5 = findViewById(R.id.tv_load_5);
-                        load5.setText("the");
+                        TextView load3 = findViewById(R.id.tv_load_3);
+                        load3.setText("preparing the perfect match");
                     }
-                }, 2500);
+                }, 3500);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load4 = findViewById(R.id.tv_load_4);
+                        load4.setText("putting some love in the air");
+                    }
+                }, 4500);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load5 = findViewById(R.id.tv_load_5);
+                        load5.setText("buying flower for the perfect mate");
+                    }
+                }, 6000);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         TextView load6 = findViewById(R.id.tv_load_6);
-                        load6.setText("ultimate");
+                        load6.setText("calculating distance");
                     }
-                }, 3000);
+                }, 6700);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         TextView load7 = findViewById(R.id.tv_load_7);
-                        load7.setText("world");
+                        load7.setText("sortin the best result");
                     }
-                }, 3500);
+                }, 7500);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -225,7 +246,7 @@ public class AccueilActivity extends AppCompatActivity {
                         goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
                         startActivity(goProfilView);
                     }
-                }, 4000);
+                }, 8000);
 
 
             }
