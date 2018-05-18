@@ -17,6 +17,7 @@ public class ProfileModel implements Parcelable {
             return new ProfileModel[size];
         }
     };
+
     private String userName;
     private String genre;
     private String species;
@@ -42,10 +43,6 @@ public class ProfileModel implements Parcelable {
         this.species = species;
         this.mass = mass;
         this.height = height;
-    }
-
-    public ProfileModel(String avatar) {
-        this.avatar = avatar;
     }
 
     protected ProfileModel(Parcel in) {
