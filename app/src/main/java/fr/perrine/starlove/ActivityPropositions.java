@@ -15,8 +15,6 @@ import java.util.ArrayList;
 
 public class ActivityPropositions extends AppCompatActivity {
 
-    ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
