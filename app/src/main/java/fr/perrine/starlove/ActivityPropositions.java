@@ -22,41 +22,12 @@ public class ActivityPropositions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propositions);
 
+        ProfileModel candidate = getIntent().getExtras().getParcelable("clef");
+
+
         GridView propositionGrid = findViewById(R.id.grid_oposition);
-        final GridAdapter proposition = new GridAdapter(ActivityPropositions.this, mImagesPeros);
+        GridAdapter proposition = new GridAdapter(ActivityPropositions.this, mImagesPeros);
         propositionGrid.setAdapter(proposition);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference candidatRef = database.getReference("aAimer");
-        candidatRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mImagesPeros.clear();
-
-                for (DataSnapshot dataForSnapshot: dataSnapshot.getChildren()){
-
-                    ProfileModel candidat = dataForSnapshot.getValue(ProfileModel.class);
-
-                    String avatar = candidat.getAvatar();
-
-                    String choice = "female";
-
-                    if (candidat.getGenre().equals(choice)) {
-                        mImagesPeros.add(new ProfileModel(candidat.getUserName(), candidat.getGenre(),
-                                candidat.getSpecies(), candidat.getMass(), candidat.getHeight(),
-                                avatar));
-                    }
-
-                }
-                proposition.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
 
     }
 }

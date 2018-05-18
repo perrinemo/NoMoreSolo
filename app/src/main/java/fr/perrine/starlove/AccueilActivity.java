@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,19 +16,65 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class AccueilActivity extends AppCompatActivity {
+
+    ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
+        Random r = new Random();
+        final int genreR = r.nextInt( 4-1);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference candidatRef = database.getReference("aAimer");
+        candidatRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot dataForSnapshot: dataSnapshot.getChildren()) {
+
+                    ProfileModel candidat = dataForSnapshot.getValue(ProfileModel.class);
+
+                    String avatar = candidat.getAvatar();
+
+                    String choice;
+
+                    if (genreR >= 1 ) {
+                        choice = "female";
+                    } else {
+                        choice = "male";
+                    }
+
+                    if (candidat.getGenre().equals(choice)) {
+                        mImagesPeros.add(new ProfileModel(candidat.getUserName(), candidat.getGenre(),
+                                candidat.getSpecies(), candidat.getMass(), candidat.getHeight(),
+                                avatar));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         /**
         // Crée une file d'attente pour les requêtes vers l'API
@@ -103,21 +150,19 @@ public class AccueilActivity extends AppCompatActivity {
         */
 
         ImageView digitalPrint = findViewById(R.id.btn_aura);
-
         digitalPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                for (int i = 1; i < 8; i ++) {
-
-                    TextView charge = findViewById(R.id.tv_load_1);
-                    charge.setText("1");
-
-                }
-
-                //startActivity(new Intent(AccueilActivity.this, AuraActivity.class));
+                Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
+                goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                startActivity(goProfilView);
             }
         });
-    }
+
+
+
 }
+}
+
+
 
