@@ -35,8 +35,19 @@ public class ProfilActivity extends AppCompatActivity {
         candidateName.setText(name);
         candidateGenre.setText(candidate.getGenre());
         candidateSpecies.setText(candidate.getSpecies());
-        candidateMass.setText(String.valueOf(candidate.getMass()));
-        candidateHeight.setText(Double.toString(candidate.getHeight()));
+        if ((String.valueOf(candidate.getMass())).equals("0")) {
+            candidateMass.setText("NC");
+        } else {
+            candidateMass.setText(String.valueOf(candidate.getMass()));
+        }
+
+        if ((Double.toString(candidate.getHeight())).equals("0")){
+
+            candidateHeight.setText("NC");
+        } else {
+            candidateHeight.setText(Double.toString(candidate.getHeight()));
+        }
+
 
         Glide.with(ProfilActivity.this).load(candidate.getAvatar()).into(candidateImg);
 
