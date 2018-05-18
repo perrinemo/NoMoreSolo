@@ -21,7 +21,6 @@ public class ActivityNo extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 ArrayList<ProfileModel> candidate = getIntent().getExtras().getParcelableArrayList("clef");
                 Intent goProfilView = new Intent(ActivityNo.this, AuraActivity.class);
                 goProfilView.putParcelableArrayListExtra("clef", candidate);
