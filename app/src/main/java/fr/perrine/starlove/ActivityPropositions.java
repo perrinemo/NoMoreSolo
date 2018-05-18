@@ -38,7 +38,14 @@ public class ActivityPropositions extends AppCompatActivity {
                     ProfileModel candidat = dataForSnapshot.getValue(ProfileModel.class);
 
                     String avatar = candidat.getAvatar();
-                    mImagesPeros.add(new ProfileModel(avatar));
+
+                    String choice = "male";
+
+                    if (candidat.getGenre().equals(choice)) {
+                        mImagesPeros.add(new ProfileModel(candidat.getUserName(), candidat.getGenre(),
+                                candidat.getSpecies(), candidat.getMass(), candidat.getHeight(),
+                                avatar));
+                    }
 
                 }
                 proposition.notifyDataSetChanged();

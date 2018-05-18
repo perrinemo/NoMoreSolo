@@ -34,13 +34,14 @@ public class GridAdapter extends ArrayAdapter<ProfileModel> {
             @Override
             public void onClick(View v) {
 
-                ProfileModel goProfil = new ProfileModel(profileModel.getUserName(), profileModel.getGenre(),
-                        profileModel.getSpecies(), profileModel.getMass(), profileModel.getHeight(),
+                ProfileModel goProfil = new ProfileModel(profileModel.getUserName(),profileModel.getGenre(),
+                        profileModel.getSpecies(),profileModel.getMass(),profileModel.getHeight(),
                         profileModel.getAvatar());
 
-            String clef = "CLEF";
+                Toast.makeText(getContext(), profileModel.getAvatar(), Toast.LENGTH_SHORT).show();
+
             Intent goProfilView = new Intent(getContext(),ProfilActivity.class);
-            goProfilView.putExtra(clef, goProfil);
+            goProfilView.putExtra("clef", goProfil);
             getContext().startActivity(goProfilView);
 
             }

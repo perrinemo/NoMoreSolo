@@ -22,12 +22,14 @@ public class ProfilActivity extends AppCompatActivity {
         TextView candidateHeight = findViewById(R.id.tv_height);
         ImageView candidateImg = findViewById(R.id.avatar);
 
-        String clef = "CLEF";
-        ProfileModel candidate = getIntent().getExtras().getParcelable(clef);
+        ProfileModel candidate = getIntent().getExtras().getParcelable("clef");
 
-        candidateName.setText((candidate.getUserName()));
+        String name = candidate.getUserName();
+        candidateName.setText(name);
         candidateGenre.setText(candidate.getGenre());
         candidateSpecies.setText(candidate.getSpecies());
+        candidateMass.setText(String.valueOf(candidate.getMass()));
+        candidateHeight.setText(Double.toString(candidate.getHeight()));
 
         Glide.with(ProfilActivity.this).load(candidate.getAvatar()).into(candidateImg);
         //candidateMass.setText(candidate.getHeight());
