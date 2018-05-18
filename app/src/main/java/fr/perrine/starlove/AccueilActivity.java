@@ -33,7 +33,7 @@ import java.util.Random;
 public class AccueilActivity extends AppCompatActivity {
 
     ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
-    boolean launch = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,12 @@ public class AccueilActivity extends AppCompatActivity {
                                 candidat.getSpecies(), candidat.getMass(), candidat.getHeight(),
                                 avatar));
                     }
+                }
+
+                while (mImagesPeros.size() > 9) {
+                    Random d = new Random();
+                    int delI = d.nextInt( 9-2);
+                    mImagesPeros.remove(delI);
                 }
             }
 
@@ -156,12 +162,6 @@ public class AccueilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                while (mImagesPeros.size() > 9) {
-                    Random d = new Random();
-                    int delI = d.nextInt( 9-2);
-                    mImagesPeros.remove(delI);
-                }
-
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -221,15 +221,12 @@ public class AccueilActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        launch = true;
+                        Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
+                        goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                        startActivity(goProfilView);
                     }
-                }, 10);
+                }, 4000);
 
-                if (launch){
-                    Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
-                    goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
-                    startActivity(goProfilView);
-                }
 
             }
         });
