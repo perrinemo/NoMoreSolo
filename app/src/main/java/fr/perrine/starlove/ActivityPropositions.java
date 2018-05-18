@@ -22,11 +22,10 @@ public class ActivityPropositions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propositions);
 
-        ProfileModel candidate = getIntent().getExtras().getParcelable("clef");
-
+        ArrayList<ProfileModel> candidate = getIntent().getExtras().getParcelableArrayList("clef");
 
         GridView propositionGrid = findViewById(R.id.grid_oposition);
-        GridAdapter proposition = new GridAdapter(ActivityPropositions.this, mImagesPeros);
+        GridAdapter proposition = new GridAdapter(ActivityPropositions.this, candidate);
         propositionGrid.setAdapter(proposition);
 
     }

@@ -153,6 +153,12 @@ public class AccueilActivity extends AppCompatActivity {
         digitalPrint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                while (mImagesPeros.size() > 9) {
+                    Random d = new Random();
+                    int delI = d.nextInt( 9-0);
+                    mImagesPeros.remove(delI);
+                }
                 Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
                 goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
                 startActivity(goProfilView);
