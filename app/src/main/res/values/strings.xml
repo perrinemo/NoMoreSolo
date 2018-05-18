@@ -40,4 +40,5 @@
     <string name="send_msg">Send a message</string>
     <string name="mss_has_been_sent">Your message has been sent</string>
     <string name="my_profile_pic">My profile picture</string>
+    <string name="register">Register ?</string>
 </resources>

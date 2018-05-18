@@ -37,8 +37,8 @@ public class ConnexionActivity extends AppCompatActivity {
 
         Glide.with(this).load(R.drawable.photofunky2).into(imgHeart);
 
-        btnConnexion.setText("Log in");
-        btnInscription.setText("Register ?");
+        btnConnexion.setText(R.string.log_in);
+        btnInscription.setText(R.string.register);
         btnForgotPass.setVisibility(View.VISIBLE);
 
         if (auth.getCurrentUser() != null) {
