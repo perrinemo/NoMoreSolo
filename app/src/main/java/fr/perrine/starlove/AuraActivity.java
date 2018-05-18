@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class AuraActivity extends AppCompatActivity {
 
-    ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
+    ArrayList<ProfileModel> mImagesPersos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class AuraActivity extends AppCompatActivity {
         TextView title = findViewById(R.id.side_of_the_force);
         FontHelper.setFont(title, "Starjhol.ttf");
 
-        mImagesPeros = getIntent().getExtras().getParcelableArrayList("clef");
+        mImagesPersos = getIntent().getExtras().getParcelableArrayList("clef");
 
         Button yes = findViewById(R.id.yes_button);
         Button no = findViewById(R.id.no_button);
@@ -30,7 +30,7 @@ public class AuraActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goProfilView = new Intent(AuraActivity.this, ActivityPropositions.class);
-                goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                goProfilView.putParcelableArrayListExtra("clef", mImagesPersos);
                 startActivity(goProfilView);
             }
         });
@@ -39,7 +39,7 @@ public class AuraActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent goProfilView = new Intent(AuraActivity.this, ActivityNo.class);
-                goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                goProfilView.putParcelableArrayListExtra("clef", mImagesPersos);
                 startActivity(goProfilView);
             }
         });
