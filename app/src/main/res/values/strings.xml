@@ -41,4 +41,10 @@
     <string name="mss_has_been_sent">Your message has been sent</string>
     <string name="my_profile_pic">My profile picture</string>
     <string name="register">Register ?</string>
+    <string name="genre_">Genre : %s</string>
+    <string name="species_">Species : %s</string>
+    <string name="mass_nc">Mass : NC</string>
+    <string name="mass_">Mass : %s</string>
+    <string name="height_nc">Height : NC</string>
+    <string name="height_">Height : %s</string>
 </resources>
