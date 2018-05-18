@@ -47,4 +47,5 @@
     <string name="mass_">Mass : %s</string>
     <string name="height_nc">Height : NC</string>
     <string name="height_">Height : %s</string>
+    <string name="enter_msg">Enter your message</string>
 </resources>
