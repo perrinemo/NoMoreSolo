@@ -1,6 +1,9 @@
 package fr.perrine.starlove;
 
-public class ProfileModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ProfileModel implements Parcelable {
 
 
     private String userName;
@@ -24,6 +27,27 @@ public class ProfileModel {
     public ProfileModel(String avatar) {
         this.avatar = avatar;
     }
+
+    protected ProfileModel(Parcel in) {
+        userName = in.readString();
+        genre = in.readString();
+        species = in.readString();
+        mass = in.readInt();
+        height = in.readDouble();
+        avatar = in.readString();
+    }
+
+    public static final Creator<ProfileModel> CREATOR = new Creator<ProfileModel>() {
+        @Override
+        public ProfileModel createFromParcel(Parcel in) {
+            return new ProfileModel(in);
+        }
+
+        @Override
+        public ProfileModel[] newArray(int size) {
+            return new ProfileModel[size];
+        }
+    };
 
     public String getUserName() {
         return userName;
@@ -71,5 +95,20 @@ public class ProfileModel {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(userName);
+        dest.writeString(genre);
+        dest.writeString(species);
+        dest.writeInt(mass);
+        dest.writeDouble(height);
+        dest.writeString(avatar);
     }
 }

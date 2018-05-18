@@ -123,7 +123,7 @@ public class AskActivity extends AppCompatActivity {
                         }
                     });
 
-                    ProfileModel model = new ProfileModel(username, mGenre, species, mass, height);
+                    ProfileModel model = new ProfileModel(username, mGenre, species, mass, height, "bug");
                     mDatabaseUsers.setValue(model);
 
                     Intent intent = new Intent(AskActivity.this, AccueilActivity.class);

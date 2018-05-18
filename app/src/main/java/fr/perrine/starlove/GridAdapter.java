@@ -1,11 +1,13 @@
 package fr.perrine.starlove;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -19,14 +21,30 @@ public class GridAdapter extends ArrayAdapter<ProfileModel> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ProfileModel profileModel = getItem(position);
+        final ProfileModel profileModel = getItem(position);
+
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_grid, parent, false);
-
         }
 
         ImageView heroImage = convertView.findViewById(R.id.img_item);
-        Glide.with(parent).load(profileModel.getAvatar()).into(heroImage);
+        Glide.with(getContext()).load(profileModel.getAvatar()).into(heroImage);
+
+        heroImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ProfileModel goProfil = new ProfileModel(profileModel.getUserName(), profileModel.getGenre(),
+                        profileModel.getSpecies(), profileModel.getMass(), profileModel.getHeight(),
+                        profileModel.getAvatar());
+
+            String clef = "CLEF";
+            Intent goProfilView = new Intent(getContext(),ProfilActivity.class);
+            goProfilView.putExtra(clef, goProfil);
+            getContext().startActivity(goProfilView);
+
+            }
+        });
 
         return convertView;
 

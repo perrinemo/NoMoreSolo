@@ -1,8 +1,12 @@
 package fr.perrine.starlove;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,7 +28,7 @@ public class AccueilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
-        /*
+        /**
         // Crée une file d'attente pour les requêtes vers l'API
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -46,7 +50,7 @@ public class AccueilActivity extends AppCompatActivity {
 
                                 String characUserName = characPage.getString("name");
                                 String characGenre = characPage.getString("gender");
-                                String characImg = characPage.getString("wiki");
+                                String characImg = characPage.getString("image");
 
                                 String characSpecie;
                                 if ((characPage.has("species"))){
@@ -96,6 +100,18 @@ public class AccueilActivity extends AppCompatActivity {
         // On ajoute la requête à la file d'attente
         requestQueue.add(JsonArrayRequest);
         */
+
+        ImageView digitalPrint = findViewById(R.id.btn_aura);
+
+        digitalPrint.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                startActivity(new Intent(AccueilActivity.this, AuraActivity.class));
+
+                return true;
+            }
+        });
     }
 }
 
