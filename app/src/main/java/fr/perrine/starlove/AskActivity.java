@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +33,6 @@ public class AskActivity extends AppCompatActivity {
     private String mCurrentPhotoPath;
     private Uri mFileUri = null;
     private String mGetImageUrl = "";
-    private ProgressBar mProgressBar;
     private String mUid;
     private DatabaseReference mDatabaseUsers;
     private ImageView mAvatar;
@@ -55,7 +53,6 @@ public class AskActivity extends AppCompatActivity {
         final RadioButton male = findViewById(R.id.radiobtn_male);
         final RadioButton female = findViewById(R.id.radiobtn_female);
         mAvatar = findViewById(R.id.img_profile);
-        mProgressBar = findViewById(R.id.progress_bar);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
