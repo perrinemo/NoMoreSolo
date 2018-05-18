@@ -17,6 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,6 +48,8 @@ public class AccueilActivity extends AppCompatActivity {
         TextView hello = findViewById(R.id.tv_hello);
         final TextView username = findViewById(R.id.tv_username);;
 
+        final ImageView avatar = findViewById(R.id.img_avatar);
+
         FontHelper.setFont(hello, "Starjhol.ttf");
         FontHelper.setFont(username, "Starjhol.ttf");
 
@@ -57,6 +60,8 @@ public class AccueilActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 ProfileModel model = dataSnapshot.getValue(ProfileModel.class);
                 username.setText(model.getUserName());
+                String url = model.getAvatar();
+                Glide.with(getApplicationContext()).load(url).into(avatar);
             }
 
             @Override
