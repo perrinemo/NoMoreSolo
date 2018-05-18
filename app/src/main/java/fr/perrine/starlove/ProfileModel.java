@@ -6,6 +6,17 @@ import android.os.Parcelable;
 public class ProfileModel implements Parcelable {
 
 
+    public static final Creator<ProfileModel> CREATOR = new Creator<ProfileModel>() {
+        @Override
+        public ProfileModel createFromParcel(Parcel in) {
+            return new ProfileModel(in);
+        }
+
+        @Override
+        public ProfileModel[] newArray(int size) {
+            return new ProfileModel[size];
+        }
+    };
     private String userName;
     private String genre;
     private String species;
@@ -13,7 +24,8 @@ public class ProfileModel implements Parcelable {
     private double height;
     private String avatar;
 
-    public ProfileModel() {}
+    public ProfileModel() {
+    }
 
     public ProfileModel(String userName, String genre, String species, int mass, double height, String avatar) {
         this.userName = userName;
@@ -44,18 +56,6 @@ public class ProfileModel implements Parcelable {
         height = in.readDouble();
         avatar = in.readString();
     }
-
-    public static final Creator<ProfileModel> CREATOR = new Creator<ProfileModel>() {
-        @Override
-        public ProfileModel createFromParcel(Parcel in) {
-            return new ProfileModel(in);
-        }
-
-        @Override
-        public ProfileModel[] newArray(int size) {
-            return new ProfileModel[size];
-        }
-    };
 
     public String getUserName() {
         return userName;

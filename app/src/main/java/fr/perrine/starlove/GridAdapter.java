@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class GridAdapter extends ArrayAdapter<ProfileModel> {
 
     public GridAdapter(Context context, ArrayList<ProfileModel> profile) {
-        super(context, 0,profile );
+        super(context, 0, profile);
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -34,13 +33,13 @@ public class GridAdapter extends ArrayAdapter<ProfileModel> {
             @Override
             public void onClick(View v) {
 
-                ProfileModel goProfil = new ProfileModel(profileModel.getUserName(),profileModel.getGenre(),
-                        profileModel.getSpecies(),profileModel.getMass(),profileModel.getHeight(),
+                ProfileModel goProfil = new ProfileModel(profileModel.getUserName(), profileModel.getGenre(),
+                        profileModel.getSpecies(), profileModel.getMass(), profileModel.getHeight(),
                         profileModel.getAvatar());
 
-            Intent goProfilView = new Intent(getContext(),ProfilActivity.class);
-            goProfilView.putExtra("clef", goProfil);
-            getContext().startActivity(goProfilView);
+                Intent goProfilView = new Intent(getContext(), ProfilActivity.class);
+                goProfilView.putExtra("clef", goProfil);
+                getContext().startActivity(goProfilView);
 
             }
         });
