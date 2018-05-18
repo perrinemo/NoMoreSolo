@@ -2,7 +2,7 @@
     <string name="app_name">No More Solo</string>
     <string name="text_for_the_day">Here are the match\nfor the day</string>
     <string name="side_of_the_force">You are from the Dark side of the force</string>
-    <string name="which_side_of_the_force_you_want">Do you want to meet people from the same side of the force.</string>
+    <string name="which_side_of_the_force_you_want">Do you want to meet people\nfrom the same side of the force.</string>
     <string name="no_btn_text">No</string>
     <string name="yes_btn_text">Yes</string>
     <string name="genre">Genre</string>
@@ -14,7 +14,7 @@
     <string name="height">Height</string>
     <string name="validate">Validate</string>
     <string name="username">Username</string>
-    <string name="no_page_choice">Ah ah ah ! Sorry, but you don't have the choice.</string>
+    <string name="no_page_choice">Ah ah ah !\nSorry, but you don\'t have the choice.</string>
     <string name="hello">Hello</string>
     <string name="phrase_1"> </string>
     <string name="phrase_2"> </string>

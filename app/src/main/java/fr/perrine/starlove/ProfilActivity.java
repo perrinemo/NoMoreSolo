@@ -33,19 +33,19 @@ public class ProfilActivity extends AppCompatActivity {
 
         String name = candidate.getUserName();
         candidateName.setText(name);
-        candidateGenre.setText(candidate.getGenre());
-        candidateSpecies.setText(candidate.getSpecies());
+        candidateGenre.setText("Genre : " + candidate.getGenre());
+        candidateSpecies.setText("Species : " + candidate.getSpecies());
         if ((String.valueOf(candidate.getMass())).equals("0")) {
-            candidateMass.setText("NC");
+            candidateMass.setText("Mass : NC");
         } else {
-            candidateMass.setText(String.valueOf(candidate.getMass()));
+            candidateMass.setText(String.valueOf("Mass : " + candidate.getMass()));
         }
 
         if ((Double.toString(candidate.getHeight())).equals("0")) {
 
-            candidateHeight.setText("NC");
+            candidateHeight.setText("Height : NC");
         } else {
-            candidateHeight.setText(Double.toString(candidate.getHeight()));
+            candidateHeight.setText("Height : " + Double.toString(candidate.getHeight()));
         }
 
 

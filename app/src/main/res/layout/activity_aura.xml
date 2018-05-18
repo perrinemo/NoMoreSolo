@@ -19,7 +19,7 @@
         android:text="@string/side_of_the_force"
         android:textAlignment="center"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="65sp"
+        android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,14 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
         android:background="@android:color/holo_orange_light"
         android:text="@string/yes_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/no_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
