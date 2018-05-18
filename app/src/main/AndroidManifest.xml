@@ -17,11 +17,7 @@
 
         <activity android:name=".AccueilActivity"
             android:screenOrientation="portrait">
-          <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-          </intent-filter>
       </activity>
         <activity android:name=".ActivityNo"
             android:screenOrientation="portrait"/>
@@ -37,7 +33,14 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name=".InscriptionActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+
+        </intent-filter>
+        </activity>
         <activity android:name=".ProfilActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".SplashScreenActivity"

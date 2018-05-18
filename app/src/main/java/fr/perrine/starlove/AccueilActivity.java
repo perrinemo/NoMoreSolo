@@ -21,6 +21,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +45,34 @@ public class AccueilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String uid = auth.getCurrentUser().getUid();
+
+        TextView hello = findViewById(R.id.tv_hello);
+        final TextView username = findViewById(R.id.tv_username);;
+
+        final ImageView avatar = findViewById(R.id.img_avatar);
+
+        FontHelper.setFont(hello, "Starjhol.ttf");
+        FontHelper.setFont(username, "Starjhol.ttf");
+
+        FirebaseDatabase database2 = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database2.getReference("users").child(uid);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ProfileModel model = dataSnapshot.getValue(ProfileModel.class);
+                username.setText(model.getUserName());
+                String url = model.getAvatar();
+                Glide.with(getApplicationContext()).load(url).into(avatar);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         Random r = new Random();
         final int genreR = r.nextInt( 4-1);
