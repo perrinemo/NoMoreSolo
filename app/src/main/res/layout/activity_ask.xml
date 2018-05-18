@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/etoile"
     tools:context=".AskActivity">
 
     <TextView
@@ -16,7 +17,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/app_name"
-        android:textSize="30dp"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -61,6 +63,8 @@
         android:ems="10"
         android:hint="@string/username"
         android:inputType="textPersonName"
+        android:textColor="@android:color/holo_orange_light"
+        android:textColorHint="@android:color/holo_orange_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_profile" />
@@ -85,29 +89,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="24dp"
-            android:checked="true"
-            />
+            android:buttonTint="@android:color/holo_orange_light"
+            android:checked="true" />
 
         <TextView
             android:id="@+id/tv_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/female" />
+            android:text="@string/female"
+            android:textColor="@android:color/holo_orange_light" />
 
         <RadioButton
             android:id="@+id/radiobtn_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="24dp"
-            />
+            android:buttonTint="@android:color/holo_orange_light" />
 
         <TextView
             android:id="@+id/tv_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/male" />
+            android:text="@string/male"
+            android:textColor="@android:color/holo_orange_light" />
     </RadioGroup>
 
     <EditText
@@ -122,6 +128,8 @@
         android:ems="10"
         android:hint="@string/species"
         android:inputType="textPersonName"
+        android:textColor="@android:color/holo_orange_light"
+        android:textColorHint="@android:color/holo_orange_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
@@ -138,6 +146,8 @@
         android:ems="10"
         android:hint="@string/mass"
         android:inputType="number"
+        android:textColor="@android:color/holo_orange_light"
+        android:textColorHint="@android:color/holo_orange_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_species" />
@@ -154,6 +164,8 @@
         android:ems="10"
         android:hint="@string/height"
         android:inputType="numberDecimal"
+        android:textColor="@android:color/holo_orange_light"
+        android:textColorHint="@android:color/holo_orange_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_mass" />
@@ -167,6 +179,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="15dp"
+        android:background="@android:color/holo_orange_light"
         android:text="@string/validate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
