@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">No More Solo</string>
-    <string name="text_for_the_day">Here are the match for the day</string>
+    <string name="text_for_the_day">Here are the match\nfor the day</string>
     <string name="side_of_the_force">You are from the Dark side of the force</string>
     <string name="which_side_of_the_force_you_want">Do you want to meet people from the same side of the force.</string>
     <string name="no_btn_text">No</string>

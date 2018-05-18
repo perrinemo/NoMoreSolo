@@ -134,6 +134,7 @@ public class AskActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(AskActivity.this, AccueilActivity.class);
                     startActivity(intent);
+                    finish();
                 }
 
             }
