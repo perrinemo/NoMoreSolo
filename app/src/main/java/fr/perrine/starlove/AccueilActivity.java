@@ -272,7 +272,8 @@ public class AccueilActivity extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
+
+                        Intent goProfilView = new Intent(AccueilActivity.this, AuraActivity.class);
                         goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
                         startActivity(goProfilView);
                     }
