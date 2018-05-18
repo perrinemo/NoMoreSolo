@@ -27,10 +27,8 @@ import com.google.firebase.storage.UploadTask;
 public class AskActivity extends AppCompatActivity {
 
     public final static int GALLERY = 123;
-    public final static int APP_PHOTO = 456;
 
     private String mGenre;
-    private String mCurrentPhotoPath;
     private Uri mFileUri = null;
     private String mGetImageUrl = "";
     private String mUid;
@@ -67,7 +65,7 @@ public class AskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(AskActivity.this);
-                builder.setTitle("My profile picture")
+                builder.setTitle(R.string.my_profile_pic)
                         .setPositiveButton("Gallery", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -113,7 +111,7 @@ public class AskActivity extends AppCompatActivity {
                         }
                     });
 
-                    ProfileModel model = new ProfileModel(username, mGenre, species, mass, height, "bug");
+                    ProfileModel model = new ProfileModel(username, mGenre, species, mass, height);
                     mDatabaseUsers.setValue(model);
 
                     Intent intent = new Intent(AskActivity.this, AccueilActivity.class);
