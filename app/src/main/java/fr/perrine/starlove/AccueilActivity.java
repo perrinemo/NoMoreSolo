@@ -25,7 +25,7 @@ import java.util.Random;
 
 public class AccueilActivity extends AppCompatActivity {
 
-    ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
+    ArrayList<ProfileModel> mImagesPersos = new ArrayList<>();
 
 
     @Override
@@ -70,112 +70,32 @@ public class AccueilActivity extends AppCompatActivity {
         candidatRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot dataForSnapshot : dataSnapshot.getChildren()) {
-
                     ProfileModel candidat = dataForSnapshot.getValue(ProfileModel.class);
-
                     String avatar = candidat.getAvatar();
-
                     String choice;
-
                     if (genreR >= 1) {
                         choice = "female";
                     } else {
                         choice = "male";
                     }
-
                     if (candidat.getGenre().equals(choice)) {
-                        mImagesPeros.add(new ProfileModel(candidat.getUserName(), candidat.getGenre(),
+                        mImagesPersos.add(new ProfileModel(candidat.getUserName(), candidat.getGenre(),
                                 candidat.getSpecies(), candidat.getMass(), candidat.getHeight(),
                                 avatar));
                     }
                 }
-
-                while (mImagesPeros.size() > 9) {
+                while (mImagesPersos.size() > 9) {
                     Random d = new Random();
                     int delI = d.nextInt(9 - 2);
-                    mImagesPeros.remove(delI);
+                    mImagesPersos.remove(delI);
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-
-
-        /**
-         // Crée une file d'attente pour les requêtes vers l'API
-         final RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-         String url = "https://cdn.rawgit.com/akabab/starwars-api/0.2.1/api/all.json";
-
-         // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
-         final JsonArrayRequest JsonArrayRequest = new JsonArrayRequest(
-         Request.Method.GET, url, null,
-         new Response.Listener<JSONArray>() {
-
-        @Override public void onResponse(JSONArray response) {
-
-        try {
-
-        for (int i = 0; i < response.length(); i++) {
-
-        JSONObject characPage = response.getJSONObject(i);
-
-        String characUserName = characPage.getString("name");
-        String characGenre = characPage.getString("gender");
-        String characImg = characPage.getString("image");
-
-        String characSpecie;
-        if ((characPage.has("species"))){
-        characSpecie = characPage.getString("species");
-        } else {
-        characSpecie = "not published";
-        }
-
-
-        int characMass;
-        if ((characPage.has("mass"))) {
-        characMass = characPage.getInt("mass");
-        } else {
-        characMass = 0;
-        }
-
-        double characHeight;
-        if ((characPage.has("height"))) {
-        characHeight = characPage.getDouble("height");
-        } else {
-        characHeight = 0.0;
-        }
-
-        ProfileModel user = new ProfileModel(characUserName, characGenre, characSpecie,
-        characMass,characHeight, characImg);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("aAimer");
-        myRef.push().setValue(user);
-        }
-
-        } catch (JSONException e) {
-        e.printStackTrace();
-        }
-        }
-        },
-         new Response.ErrorListener() {
-
-        @Override public void onErrorResponse(VolleyError error) {
-        // Afficher l'erreur
-        Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
-        }
-        }
-         );
-
-         // On ajoute la requête à la file d'attente
-         requestQueue.add(JsonArrayRequest);
-         */
 
         ImageView digitalPrint = findViewById(R.id.btn_aura);
         digitalPrint.setOnClickListener(new View.OnClickListener() {
@@ -203,7 +123,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load1 = findViewById(R.id.tv_load_1);
-                        load1.setText("Loading the blasters");
+                        load1.setText(R.string.phrase_1);
                     }
                 }, 1500);
 
@@ -211,7 +131,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load2 = findViewById(R.id.tv_load_2);
-                        load2.setText("Reading deep mind of the user");
+                        load2.setText(R.string.phrase_2);
                     }
                 }, 2000);
 
@@ -219,7 +139,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load3 = findViewById(R.id.tv_load_3);
-                        load3.setText("Preparing the perfect match");
+                        load3.setText(R.string.phrase_3);
                     }
                 }, 3500);
 
@@ -227,7 +147,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load4 = findViewById(R.id.tv_load_4);
-                        load4.setText("Putting some love in the air");
+                        load4.setText(R.string.phrase_4);
                     }
                 }, 4500);
 
@@ -235,7 +155,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load5 = findViewById(R.id.tv_load_5);
-                        load5.setText("Buying flower for the perfect mate");
+                        load5.setText(R.string.phrase_5);
                     }
                 }, 6000);
 
@@ -243,7 +163,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load6 = findViewById(R.id.tv_load_6);
-                        load6.setText("Calculating distance");
+                        load6.setText(R.string.phrase_6);
                     }
                 }, 6700);
 
@@ -251,24 +171,86 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load7 = findViewById(R.id.tv_load_7);
-                        load7.setText("Sortin the best result");
+                        load7.setText(R.string.phrase_7);
                     }
                 }, 7500);
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-
                         Intent goProfilView = new Intent(AccueilActivity.this, AuraActivity.class);
-                        goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                        goProfilView.putParcelableArrayListExtra("clef", mImagesPersos);
                         startActivity(goProfilView);
                         finish();
                     }
                 }, 8000);
-
-
             }
         });
+
+        /**
+         * Partie du code qui envoie les données de l'API vers Firebase
+
+         // Créer une file d'attente pour les requêtes vers l'API
+         final RequestQueue requestQueue = Volley.newRequestQueue(this);
+         String url = "https://cdn.rawgit.com/akabab/starwars-api/0.2.1/api/all.json";
+
+         // Création de la requête vers l'API, ajout des écouteurs pour les réponses et erreurs possibles
+         final JsonArrayRequest JsonArrayRequest = new JsonArrayRequest(
+         Request.Method.GET, url, null,
+         new Response.Listener<JSONArray>() {
+            @Override public void onResponse(JSONArray response) {
+                try {
+                    for (int i = 0; i < response.length(); i++) {
+                        JSONObject characPage = response.getJSONObject(i);
+                        String characUserName = characPage.getString("name");
+                        String characGenre = characPage.getString("gender");
+                        String characImg = characPage.getString("image");
+                        String characSpecie;
+                        if ((characPage.has("species"))) {
+                            characSpecie = characPage.getString("species");
+                        } else {
+                           characSpecie = "not published";
+                        }
+
+
+                        int characMass;
+                        if ((characPage.has("mass"))) {
+                            characMass = characPage.getInt("mass");
+                        } else {
+                            characMass = 0;
+                        }
+
+                        double characHeight;
+                        if ((characPage.has("height"))) {
+                            characHeight = characPage.getDouble("height");
+                        } else {
+                            characHeight = 0.0;
+                        }
+
+                        ProfileModel user = new ProfileModel(characUserName, characGenre, characSpecie,
+                        characMass,characHeight, characImg);
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("aAimer");
+                        myRef.push().setValue(user);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+         },
+         new Response.ErrorListener() {
+
+            @Override public void onErrorResponse(VolleyError error) {
+                // Afficher l'erreur
+                Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
+            }
+         });
+
+         // On ajoute la requête à la file d'attente
+         requestQueue.add(JsonArrayRequest);
+         */
 
     }
 }
