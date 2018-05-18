@@ -8,8 +8,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,6 +31,11 @@ public class InscriptionActivity extends AppCompatActivity {
         Button btnInscription = findViewById(R.id.btn_signin);
         Button btnDejaInscrit = findViewById(R.id.btn_login);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
+        ImageView imgHeart = findViewById(R.id.img_heart);
+        TextView appName = findViewById(R.id.tv_app_name);
+        FontHelper.setFont(appName, "Starjhol.ttf");
+
+        Glide.with(this).load(R.drawable.photofunky2).into(imgHeart);
 
         btnDejaInscrit.setOnClickListener(new View.OnClickListener() {
             @Override

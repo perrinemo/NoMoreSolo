@@ -14,30 +14,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccueilActivity">
-
-        </activity>
-        <activity android:name=".ActivityNo" />
-        <activity android:name=".ActivityPropositions" />
-        <activity android:name=".AskActivity" />
-        <activity android:name=".AuraActivity" />
-        <activity android:name=".ConnexionActivity" />
-        <activity
-            android:name=".ForgotPassActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".InscriptionActivity"></activity>
-        <activity android:name=".ProfilActivity" />
-
-
-        <activity android:name=".SplashScreenActivity" >
-        <intent-filter>
+        <activity android:name=".AccueilActivity"
+            android:screenOrientation="portrait">
+          <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
-
-        </intent-filter>
-        </activity>
-
+          </intent-filter>
+      </activity>
+        <activity android:name=".ActivityNo"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivityPropositions"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AskActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AuraActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ConnexionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ForgotPassActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".InscriptionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ProfilActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
