@@ -39,7 +39,7 @@ public class ActivityPropositions extends AppCompatActivity {
 
                     String avatar = candidat.getAvatar();
 
-                    String choice = "male";
+                    String choice = "female";
 
                     if (candidat.getGenre().equals(choice)) {
                         mImagesPeros.add(new ProfileModel(candidat.getUserName(), candidat.getGenre(),

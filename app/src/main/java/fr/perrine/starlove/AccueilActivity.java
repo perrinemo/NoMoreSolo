@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -103,13 +104,18 @@ public class AccueilActivity extends AppCompatActivity {
 
         ImageView digitalPrint = findViewById(R.id.btn_aura);
 
-        digitalPrint.setOnLongClickListener(new View.OnLongClickListener() {
+        digitalPrint.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
 
-                startActivity(new Intent(AccueilActivity.this, AuraActivity.class));
+                for (int i = 1; i < 8; i ++) {
 
-                return true;
+                    TextView charge = findViewById(R.id.tv_load_1);
+                    charge.setText("1");
+
+                }
+
+                //startActivity(new Intent(AccueilActivity.this, AuraActivity.class));
             }
         });
     }

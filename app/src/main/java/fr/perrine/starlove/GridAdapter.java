@@ -38,8 +38,6 @@ public class GridAdapter extends ArrayAdapter<ProfileModel> {
                         profileModel.getSpecies(),profileModel.getMass(),profileModel.getHeight(),
                         profileModel.getAvatar());
 
-                Toast.makeText(getContext(), profileModel.getAvatar(), Toast.LENGTH_SHORT).show();
-
             Intent goProfilView = new Intent(getContext(),ProfilActivity.class);
             goProfilView.putExtra("clef", goProfil);
             getContext().startActivity(goProfilView);
