@@ -233,7 +233,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load3 = findViewById(R.id.tv_load_3);
-                        load3.setText("preparing the perfect match");
+                        load3.setText("Preparing the perfect match");
                     }
                 }, 3500);
 
@@ -241,7 +241,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load4 = findViewById(R.id.tv_load_4);
-                        load4.setText("putting some love in the air");
+                        load4.setText("Putting some love in the air");
                     }
                 }, 4500);
 
@@ -249,7 +249,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load5 = findViewById(R.id.tv_load_5);
-                        load5.setText("buying flower for the perfect mate");
+                        load5.setText("Buying flower for the perfect mate");
                     }
                 }, 6000);
 
@@ -257,7 +257,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load6 = findViewById(R.id.tv_load_6);
-                        load6.setText("calculating distance");
+                        load6.setText("Calculating distance");
                     }
                 }, 6700);
 
@@ -265,7 +265,7 @@ public class AccueilActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         TextView load7 = findViewById(R.id.tv_load_7);
-                        load7.setText("sortin the best result");
+                        load7.setText("Sortin the best result");
                     }
                 }, 7500);
 
@@ -275,6 +275,7 @@ public class AccueilActivity extends AppCompatActivity {
                         Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
                         goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
                         startActivity(goProfilView);
+                        finish();
                     }
                 }, 8000);
 
