@@ -18,6 +18,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/no_page_choice"
         android:textSize="75sp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
