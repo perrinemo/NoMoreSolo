@@ -2,6 +2,7 @@ package fr.perrine.starlove;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class ProfilActivity extends AppCompatActivity {
         candidateHeight.setText(Double.toString(candidate.getHeight()));
 
         Glide.with(ProfilActivity.this).load(candidate.getAvatar()).into(candidateImg);
-        //candidateMass.setText(candidate.getHeight());
-        //candidateHeight.setText(candidate.getHeight());
+
+        Button sendMsg = findViewById(R.id.btn)
     }
 }
