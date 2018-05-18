@@ -2,6 +2,7 @@ package fr.perrine.starlove;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +33,7 @@ import java.util.Random;
 public class AccueilActivity extends AppCompatActivity {
 
     ArrayList<ProfileModel> mImagesPeros = new ArrayList<>();
+    boolean launch = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,16 +158,81 @@ public class AccueilActivity extends AppCompatActivity {
 
                 while (mImagesPeros.size() > 9) {
                     Random d = new Random();
-                    int delI = d.nextInt( 9-0);
+                    int delI = d.nextInt( 9-2);
                     mImagesPeros.remove(delI);
                 }
-                Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
-                goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
-                startActivity(goProfilView);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load1 = findViewById(R.id.tv_load_1);
+                        load1.setText("Hello");
+                    }
+                }, 500);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load2 = findViewById(R.id.tv_load_2);
+                        load2.setText("beautyfull");
+                    }
+                }, 1000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load3 = findViewById(R.id.tv_load_3);
+                        load3.setText("world");
+                    }
+                }, 1500);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load4 = findViewById(R.id.tv_load_4);
+                        load4.setText("of");
+                    }
+                }, 2000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load5 = findViewById(R.id.tv_load_5);
+                        load5.setText("the");
+                    }
+                }, 2500);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load6 = findViewById(R.id.tv_load_6);
+                        load6.setText("ultimate");
+                    }
+                }, 3000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView load7 = findViewById(R.id.tv_load_7);
+                        load7.setText("world");
+                    }
+                }, 3500);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        launch = true;
+                    }
+                }, 10);
+
+                if (launch){
+                    Intent goProfilView = new Intent(AccueilActivity.this, ActivityPropositions.class);
+                    goProfilView.putParcelableArrayListExtra("clef", mImagesPeros);
+                    startActivity(goProfilView);
+                }
+
             }
         });
-
-
 
 }
 }
