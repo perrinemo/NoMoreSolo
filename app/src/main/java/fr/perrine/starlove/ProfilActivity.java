@@ -29,6 +29,8 @@ public class ProfilActivity extends AppCompatActivity {
         TextView candidateHeight = findViewById(R.id.tv_height);
         ImageView candidateImg = findViewById(R.id.avatar);
 
+        FontHelper.setFont(candidateName, "Starjhol.ttf");
+
         ProfileModel candidate = getIntent().getExtras().getParcelable("clef");
 
         String name = candidate.getUserName();
